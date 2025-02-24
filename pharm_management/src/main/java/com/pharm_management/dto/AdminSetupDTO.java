@@ -1,6 +1,6 @@
 package com.pharm_management.dto;
 
-public class AdminSetupRequest 
+public class AdminSetupDTO 
 {
 
     private String email;
@@ -9,12 +9,11 @@ public class AdminSetupRequest
     private String password;
 
     
-    public AdminSetupRequest() 
+    public AdminSetupDTO() 
 	{
     }
 
-    
-    public AdminSetupRequest(String email, String firstName, String lastName, String password) 
+    public AdminSetupDTO(String email, String firstName, String lastName, String password) 
 	{
         this.email = email;
         this.firstName = firstName;
@@ -22,7 +21,6 @@ public class AdminSetupRequest
         this.password = password;
     }
 
-  
     public String getEmail() 
 	{
         return email;

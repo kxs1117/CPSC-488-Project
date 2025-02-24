@@ -1,48 +1,52 @@
-document.addEventListener('DOMContentLoaded', function() {  
+document.addEventListener('DOMContentLoaded', () => {     
     const setup = document.getElementById('setup');        
   
-    setup.addEventListener('submit', async function (event) {   
-        event.preventDefault();                                
-                                                                
-
-
-                                                                                   
-        const email = document.getElementById('email').value;
-        const firstName = document.getElementById('firstName').value;
-        const lastName = document.getElementById('lastName').value;
+    setup.onsubmit = async (event) => {
+        event.preventDefault();
+          
+        //Ensure the given passwords match and meet necessary requirements
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
-
-
-        if (password !== confirmPassword) {             
-            alert("Passwords do not match.");       
-            return false;
+        
+        if (password.length < 8 || !/\d/.test(password) || password !== confirmPassword) {
+            alert('Please try a new password that follows the given password rules.');
+            return;
         }
 
-
-        const payload = {                           
-            email: email,
-            firstName: firstName,
-            lastName: lastName,
+        //Data for backend admin setup
+        const data = {
+            email: document.getElementById('email').value,
+            firstName: document.getElementById('firstName').value,
+            lastName: document.getElementById('lastName').value,
             password: password
         };
-
-        const response = await fetch('http://localhost:8080/setup', {       
+    
+        try {
+            //Send the data to backend
+            const response = await fetch('/setup', {       
             method: 'POST',                                                 
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(payload) 
-        });
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)  
+            });
 
-        const data = await response.text();
+            const result = await response.text();   
 
-        if (response.status === 200) {                        
-            alert("STATUS : "+ response.status);               
-            window.location.href = '/user_management.html';
-        } else {
-            alert("Alert developer: "+ response.status +"| Data: "+ data);
-
+            if (response.ok) {   
+                //Redirect if succesful                           
+                window.location.href = '/user_management.html';
+           
+            } else {
+                //Server side errors
+                console.log(result);
+                alert("There was a server error");
+            }
+        
+        } catch (err) {
+            //Network error
+            console.error('Error: ', err);
+            alert("A network error occured");
         }
-    });
+    };
 });
+
+
