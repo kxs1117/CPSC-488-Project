@@ -19,10 +19,10 @@ public class User {
     private String password;
 	
    
-    @Column(nullable = false)
+    @Column
     private String firstName;
 	
-    @Column(nullable = false)
+    @Column
     private String lastName;
 	
     @ManyToOne(fetch = FetchType.EAGER)
