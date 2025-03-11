@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+
+<div>
+    <h1>Name of program</h1>
+
+    <p>Please log into the system.</p>
+
+    <div>
+        <form id="login">
+            <div>
+                <label>Username (email): </label>
+                    <div>
+                        <input type="text" name="username" id="username" required/>
+                        <span id="usernameMessage"></span>
+                    </div>
+            </div>
+
+            <div>
+                <label>Password: </label>
+                    <div> 
+                        <input type="password" name="password" id="password" required />
+                        <span id="passwordMessage"></span>
+                    </div> 
+            </div>
+            
+            <div>
+                <span id="loginError" class="error"></span>
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="footer">
+    <a href="">Contact support</a>
+</div>
+</body>

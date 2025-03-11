@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Create New User</title>
+
+<script src="./js/userCreationJS.js" type="module"></script>	
+</head>
+
+<body>
+	<div><!--Header-->
+		<div><!--Left header-->
+			<p>Program name</p>
+		</div>
+		<div><!--Right header-->
+			<a href="home">Home</a>
+			<a href="/account">Account</a>
+			<a href="/logout">Sign Out</a>
+		</div>
+	</div>
+
+	<div>
+		<div>
+			<h2>Create New Child</h2><br>
+		</div>
+
+		<form id="addUser">
+			<div>
+				<label>Email:</label>
+				<div>
+					<input type="text" id="email" name="email" required/>
+					<span id="emailError" class="error-message"></span>
+				</div>
+			</div>
+
+			<div>
+				<label>First Name:</label>
+				<div>
+					<input type="text" id="firstName" name="firstName" required />
+				</div>
+			</div>
+
+			<div>
+				<label>Last Name:</label>
+				<div>
+					<input type="text" id="lastName" name="lastName" required />
+				</div>
+			</div>
+
+			<div>
+				<label>Temporary Password:</label>
+				<div>
+					<input type="password" id="password" name="password" required />
+					<span id="passwordError" class="error-message"></span>
+				</div>
+			</div>
+
+			<div>
+				<label>Resubmit Password:</label>
+				<div>
+					<input type="password" id="rePassword" name="rePassword" required />
+				</div>
+			</div>
+
+			<div>
+				<label>Role:</label>
+				<div>
+					<select id="role" name="role">
+						<option value="ADMIN">Administrator</option>
+            			<option value="SENIOR_PHARMACIST">Senior pharmacist</option>
+            			<option value="PHARMACIST">Pharmacist</option>
+            			<option value="MANAGER">Manager</option>
+            			<option value="ANALYST">Security analyst</option>
+					</select>
+				</div>
+			</div>
+
+			<div>
+				<button type="submit">Add user</button>
+			</div>
+		</form>
+	</div>
+
+	<div>
+		<div>
+		<p>Registered users of the system:</p>
+		</div>
+		<!--Go back and add date created column later.-->
+		<table id="userTable" border="1">
+			<thead>
+				<tr>
+					<th>Username</th>
+					<th>First name</th>
+					<th>Last name</th>
+					<th>Role</th>
+					<th>Delete user</th>
+				</tr>
+			</thead>
+			<tbody id="userTableRows">
+			</tbody>
+		</table>
+
+<div class="footer">
+	<a href="">Contact support</a>
+</div>
+</body>
+</html>
