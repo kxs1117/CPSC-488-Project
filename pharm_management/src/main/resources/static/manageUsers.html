@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Create New User</title>
+	<script src="./js/manageUsers.js" defer></script>
+</head>
+
+<body>
+	<div><!--Header-->
+		<div><!--Left side of header-->
+			<p>Program name</p>
+		</div>
+		<div><!--Right side of header. Go back and link correct pages-->
+			<a href="home">Home</a>				
+			<a href="/account">Account</a>
+			<a href="/logout">Sign Out</a>
+		</div>
+	</div>
+
+	<div>
+		<div>
+			<h2>Create New Child</h2><br>
+		</div>
+
+		<form id="addUser">
+			<div>
+				<label>Email:</label>
+				<div>
+					<input type="text" id="email" name="email" required/>
+					<span id="emailError"></span>
+				</div>
+			</div>
+
+			<div>
+				<label>First Name:</label>
+				<div>
+					<input type="text" id="firstName" name="firstName" required />
+				</div>
+			</div>
+
+			<div>
+				<label>Last Name:</label>
+				<div>
+					<input type="text" id="lastName" name="lastName" required />
+				</div>
+			</div>
+
+			<div>
+				<label>Temporary Password:</label>
+				<div>
+					<input type="password" id="password" name="password" required />
+					<span id="passwordError"></span>
+				</div>
+			</div>
+
+			<div>
+				<label>Resubmit Password:</label>
+				<div>
+					<input type="password" id="rePassword" name="rePassword" required />
+				</div>
+			</div>
+
+			<div>
+				<label>Role:</label>
+				<div>
+					<select id="role" name="role">
+						<option value="ADMIN">Administrator</option>
+            			<option value="SENIOR_PHARMACIST">Senior pharmacist</option>
+            			<option value="PHARMACIST">Pharmacist</option>
+            			<option value="MANAGER">Manager</option>
+            			<option value="ANALYST">Security analyst</option>
+					</select>
+				</div>
+			</div>
+
+			<div>
+				<button type="submit">Add user</button>
+			</div>
+		</form>
+	</div>
+
+	<div>
+		<div>
+		<p>Registered users of the system:</p>
+		</div>
+		<!--Go back and add date created column later when implementing back end portion.-->
+		<table id="userTable" border="1">
+			<thead>
+				<tr>
+					<th>Username</th>
+					<th>First name</th>
+					<th>Last name</th>
+					<th>Role</th>
+					<th>Delete user</th>
+				</tr>
+			</thead>
+			<tbody id="userTableRows">
+			</tbody>
+		</table>
+
+<div class="footer">	<!--Go back and create contact support page-->
+	<a href="">Contact support</a>
+</div>
+
+<script src="./js/manageUsers.js"></script>	
+</body>
+</html>

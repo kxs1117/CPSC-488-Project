@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Creation</title>
+	<script src="js/adminCreation.js" defer></script>	
+</head>
+<body>
+	<div> <!--Div container to center the content in the middle of page. Add class attribute for CSS styling-->
+    		
+		<h1>Name of the program</h1>    <!--Need to come up with some program name-->
+
+		<h2>Adminstrator Account Creation</h2>
+      
+        <div>
+			<p>Please ensure that your password is eight characters in length and contains one digit.</p>
+		</div>
+
+		<div>
+			<form id="registrationForm">
+				<div> 
+					<label>E-mail:</label>
+						<div>
+							<input type="text" name="email" id="email" />
+							<span id="emailError"></span>
+						</div>
+				</div>
+				<div>
+					<label>First Name:</label>
+						<div>
+							<input type="text" name="firstName" id="firstName" required />
+						</div>
+				</div>
+				<div>
+					<label>Last Name:</label>
+						<div>
+							<input type="text" name="lastName" id="lastName" required />
+						</div>
+				</div>
+				<div>
+					<label>Password:</label>
+						<div>
+							<input type="password" name="password" id="password" required />
+							<span id="passwordError"></span>
+						</div>
+				</div>
+				<div>
+					<label>Confirm password:</label>
+						<div>
+							<input type="password" name="confirmPassword" id="confirmPassword" required />
+						</div>
+				</div>
+				
+				<div>
+					<button type="submit">Sign Up</button>
+				</div>
+			</form>
+		</div>
+
+	</div>
+	
+	<div class="footer">    <!--Will go back and make contact support page-->
+		<a href="">Contact support</a>
+	</div>
+</body>
+</html>
