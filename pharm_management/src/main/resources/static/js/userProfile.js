@@ -61,25 +61,17 @@ function checkPassword(password, newPassword, reNewPassword)
     } 
 }
 
-//Event listeners for message alerts
-DOBinput.addEventListener('keydown', function()
+contactForm.addEventListener('keydown', function(event) 
 {
-    DOBmessage.textContent = 'Ensure that DOB ranges between 1935 and 2007.'
-});
-
-phoneInput.addEventListener('keydown', function()
-{
-    phoneMessage.textContent = 'Format: 123-456-7890'
-});
-
-addressInput.addEventListener('keydown', function()
-{
-    addressMessage.textContent = 'Format: address, city, zip code.'
-});
-
-licenseInput.addEventListener('click', function()
-{
-    licenseMessage.textContent = 'Note: only pharmacist users can enter a license number.'
+    if (event.target.id === 'DOBinput') {
+            DOBmessage.textContent = 'Ensure that DOB ranges between 1935 and 2007.'
+    }   else if (event.target.id ==='phoneInput') {
+            phoneMessage.textContent = 'Format: 123-456-7890'
+    }   else if (event.target.id ==='addressInput') {
+            addressMessage.textContent = 'Format: address, city, zip code.'
+    }   else if (event.target.id ==='licenseInput') {
+            licenseMessage.textContent = 'Note: only pharmacist users can enter a license number.'
+    }
 });
 
 

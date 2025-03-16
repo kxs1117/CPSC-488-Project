@@ -1,34 +1,25 @@
-
 const loginForm = document.getElementById('login');
-
-//Username event/message
-const username = document.getElementById('username');
 const usernameMessage = document.getElementById('usernameMessage');
-
-//Password event/message
-const password = document.getElementById('password');
 const passwordMessage = document.getElementById('passwordMessage');
 
-//Event alerts
-username.addEventListener('keydown', function()
+loginForm.addEventListener('keydown', function (event) 
 {
-    usernameMessage.textContent = 'Important: username requires an email format.'
+
+    if (event.target.id === 'username') {
+        usernameMessage.textContent = 'Important: username requires an email format.';
+    } else if (event.target.id === 'password') {
+        passwordMessage.textContent = 'Important: Password should be 8 characters long and have a digit.';
+    }
 });
 
-password.addEventListener('keydown', function()
+loginForm.addEventListener('submit', function (event) 
 {
-    passwordMessage.textContent = 'Important: Password should be 8 characters long and have a digit.'
-});
-
-loginForm.addEventListener('submit', function(event) {
-    event.preventDefault(); 
+    event.preventDefault(); //Test wether this is needed or not
     window.location.href = 'home.html'; 
 
     //Implement backend request call for user validation.
 
 });
-
-
 
 
 

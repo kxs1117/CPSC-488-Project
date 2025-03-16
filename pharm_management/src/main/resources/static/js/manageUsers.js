@@ -48,21 +48,11 @@ function checkEmail(email, emailError)
     }
 }
 
-document.getElementById('userTableRows').addEventListener('click', function(event) 
-{
-    if (event.target.classList.contains('action-delete')) {
-        event.target.closest('tr').remove();
-    }
-});
-
 function createTableRow() 
 {
     //Will have to implement back end request to delete user from DB when deleting from table.
     const tbody = document.getElementById('userTableRows');
     const newRow = tbody.insertRow();
-
-    const rowId = email.value.replace(/[^a-zA-Z0-9]/g, '-');
-    newRow.id = rowId;
 
     const cell1 = newRow.insertCell(0);
     const cell2 = newRow.insertCell(1);
@@ -78,6 +68,13 @@ function createTableRow()
 
     addUserForm.reset();
 }
+
+document.getElementById('userTableRows').addEventListener('click', function(event) 
+{
+    if (event.target.classList.contains('action-delete')) {
+        event.target.closest('tr').remove();
+    }
+});
 
 addUserForm.addEventListener('submit', function(event) 
 {
