@@ -3,134 +3,75 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Profile page</title>
-	<script src="./js/userProfile.js" defer></script>	
+	<script src="./js/userProfile.js" defer></script>
+	<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <div><!--Header-->
-		<div><!--Left header part-->
-			<p>Program name</p>
-		</div>
-		<div><!--Right side of header. Go back and link correct pages-->
-			<a href="home.html">Home</a>
-			<a href="login.html">Sign Out</a>
-		</div>
-	</div>
+    <div class="header">
+        <div> <!-- Left side -->
+            <p>Pharmacy Management System</p>
+        </div>
+        <div class="nav-links"> <!-- Right side -->
+            <a href="userProfile.html">My profile</a>
+            <a href="login.html">Sign Out</a>
+        </div>
+    </div>
 
-	<div> <!--Wraps all page content aside from header and footer-->
-		<div>	
-			<h2 id="userGreet">Welcome!</h2> <!--Change later when back end is implemented to include users first name and last name-->
-			<span id="accountInfo">Role: (Users role type). Account created: 1/01/2025</span> <!--Change later when back end is implemented to include user role type and account creation date-->
-		</div>
-	</div>
-	<div>
-		
-			<div>
-				<h3>Personal Information</h3>
-				
-				<div>
-					<span>Date of birth:</span>			<!--Using two separate SPANs for the following several SPANs so each can have different styling.-->
-					<span id="DOBdisplay"></span>		<!--If you want you can merge the SPANs into one if you dont want to stylize each differently-->
-				</div>
-				<div>
-					<span>Phone Number:</span>
-					<span id="phoneDisplay"></span>
-				</div>
-				<div>
-					<span>Address:</span>
-					<span id="addressDisplay"></span>
-				</div>
-				<div>
-					<span>License Number:</span>
-					<span id="licenseDisplay"></span>
-				</div>
-				<div>
-					<span>Permissions:</span>
-					<span id="permissionsDisplay"></span>
-				</div>
-			</div>
+    <!-- Main container for the content -->
+    <div class="container">
+        <div class="section">
+            <h2 id="userGreet">Welcome!</h2>
+            <span id="accountInfo">Role: (Users role type). Account created: 1/01/2025</span>
+        </div>
 
-			
-				<h3>Update Information</h3>
-				<div>
-					<form id="contactForm">
-						<div>
-							<label>Date of birth:</label>
-								<div>
-									<input type="date" id="DOBinput" name="DOBinput">
-									<span id="DOBmessage"></span>						<!--Tells user what year date range should be.-->
-									<span id="DOBerror"></span>	
-								</div>
-						</div>
+        <div class="section">
+            <h3>Personal Information</h3>
+            <p>Date of birth: <span id="DOBdisplay"></span></p>
+            <p>Phone Number: <span id="phoneDisplay"></span></p>
+            <p>Address: <span id="addressDisplay"></span></p>
+            <p>License Number: <span id="licenseDisplay"></span></p>
+            <p>Permissions: <span id="permissionsDisplay"></span></p>
+        </div>
 
-						<div>
-							<label>Phone Number:</label>
-								<div>
-									<input type="tel" id="phoneInput" name="phoneInput" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
-									<span id="phoneMessage"></span>
-								</div>
-						</div>
+        <div class="section">
+            <h3>Update Information</h3>
+            <form id="contactForm">
+                <label>Date of birth:</label>
+                <input type="date" id="DOBinput" name="DOBinput">
+                
+                <label>Phone Number:</label>
+                <input type="tel" id="phoneInput" name="phoneInput" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
 
-						<div>
-							<label>Address</label> 
-							<div>
-        						<input type="text" id="addressInput" name="addressInput">
-								<span id="addressMessage"></span>	
-							</div>
-						</div>
+                <label>Address:</label>
+                <input type="text" id="addressInput" name="addressInput">
+                
+                <label>License:</label>
+                <input type="text" id="licenseInput" name="licenseInput">
 
-						<div>
-							<label>License</label>
-							<div>
-								<input type="text" id="licenseInput" name="licenseInput">	<!--Use the users role that is retrieved from the back end to prevent them from using this field if they arent a pharmacist-->
-								<span id="licenseMessage"></span>	
-							</div> 
-						</div>
+                <button type="submit">Update Contact Information</button>
+            </form>
+        </div>
 
-						<div>
-							<button type="submit">Update Contact Information</button>
-						</div>
-					</form>
-				</div>
-			
+        <div class="section">
+            <h3>Reset password</h3>
+            <form id="passwordForm">
+                <label>Current password:</label>
+                <input type="password" id="password" name="password" required>
 
-			
-				<h3>Reset password</h3>
+                <label>New Password:</label>
+                <input type="password" id="newPassword" name="newPassword" required>
+                
+                <label>Confirm New Password:</label>
+                <input type="password" id="reNewPassword" name="reNewPassword" required>
 
-				<form id="passwordForm">
+                <button type="submit">Change Password</button>
+            </form>
+        </div>
+    </div>
 
-					<div>
-						<label>Current password:</label>
-							<div>
-								<input type="password" id="password" name="password" required>
-							</div>
-                    </div>
-
-					<div>
-						<label>New Password:</label>
-						<div>
-							<input type="password" id="newPassword" name="newPassword" required>
-							<span id="passwordError"></span>
-						</div>
-					</div>
-					
-					<div>
-						<label>Confirm New Password:</label>
-							<div>
-								<input type="password" id="reNewPassword" name="reNewPassword" required>
-							</div>
-					</div>
-					
-					<div>
-					<button type="submit">Change Password</button>
-					</div>
-				</form>
-			
-		
-	</div>
-
-	<div class="footer"> <!--Go back and create support page-->
-		<a href="contactUs.html">Contact support</a>
-	</div>
+    <div class="footer">
+        <a href="contactUs.html">Contact support</a>
+    </div>
 </body>
 </html>
