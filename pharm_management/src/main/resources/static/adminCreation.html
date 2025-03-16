@@ -7,58 +7,47 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<div> <!--Div container to center the content in the middle of page. Add class attribute for CSS styling-->
-    		
-		<h1>Name of the program</h1>    <!--Need to come up with some program name-->
+    <div class="container">
+        <h1>Name of the program</h1>
+        <h2>Administrator Account Creation</h2>
+        <p>Please ensure that your password is eight characters in length and contains one digit.</p>
 
-		<h2>Adminstrator Account Creation</h2>
-      
-        <div>
-			<p>Please ensure that your password is eight characters in length and contains one digit.</p>
-		</div>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="text" name="email" id="email" />
+                <span id="emailError"></span>
+            </div>
 
-		<div>
-			<form id="registrationForm">
-				<div> 
-					<label>E-mail:</label>
-						<div>
-							<input type="text" name="email" id="email" />
-							<span id="emailError"></span>
-						</div>
-				</div>
-				<div>
-					<label>First Name:</label>
-						<div>
-							<input type="text" name="firstName" id="firstName" required />
-						</div>
-				</div>
-				<div>
-					<label>Last Name:</label>
-						<div>
-							<input type="text" name="lastName" id="lastName" required />
-						</div>
-				</div>
-				<div>
-					<label>Password:</label>
-						<div>
-							<input type="password" name="password" id="password" required />
-							<span id="passwordError"></span>
-						</div>
-				</div>
-				<div>
-					<label>Confirm password:</label>
-						<div>
-							<input type="password" name="confirmPassword" id="confirmPassword" required />
-						</div>
-				</div>
-				
-				<div>
-					<button type="submit">Sign Up</button>
-				</div>
-			</form>
-		</div>
+            <div class="form-group">
+                <label>First Name:</label>
+                <input type="text" name="firstName" id="firstName" required />
+            </div>
 
-	</div>
+            <div class="form-group">
+                <label>Last Name:</label>
+                <input type="text" name="lastName" id="lastName" required />
+            </div>
+
+            <div class="form-group">
+                <label>Password:</label>
+                <input type="password" name="password" id="password" required />
+                <span id="passwordError"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Confirm Password:</label>
+                <input type="password" name="confirmPassword" id="confirmPassword" required />
+            </div>
+
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+    <div class="footer">
+        <a href="contactUs.html">Contact support</a>
+    </div>
+</body>
 	
 	<div class="footer">    <!--Will go back and make contact support page-->
 		<a href="contactUs.html">Contact support</a>

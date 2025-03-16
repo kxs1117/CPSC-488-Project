@@ -7,38 +7,31 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div>
-        <h1>Name of program</h1><!--Need name for program-->
-
-        <div>
+    <div class="container">
+        <h1>Name of program</h1>
         <p>Please log into the system.</p>
-        </div>
 
-        <div>
-            <form id="login">
-                <div>
-                    <label>Username (email): </label>
-                        <div>
-                            <input type="text" name="username" id="username" required/>
-                            <span id="usernameMessage"></span>
-                        </div>
-                </div>
+        <form id="login">
+            <div class="form-group">
+                <label>Username (email):</label>
+                <input type="text" name="username" id="username" required />
+                <span id="usernameMessage"></span>
+            </div>
 
-                <div>
-                    <label>Password: </label>
-                        <div> 
-                            <input type="password" name="password" id="password" required />
-                            <span id="passwordMessage"></span>
-                        </div> 
-                </div>
-            
-                <div>
-                    <span id="loginError" class="error"></span>
-                    <button type="submit">Login</button>
-                </div>
-            </form>
-        </div>
+            <div class="form-group">
+                <label>Password:</label>
+                <input type="password" name="password" id="password" required />
+                <span id="passwordMessage"></span>
+            </div>
+
+            <button type="submit">Login</button>
+        </form>
     </div>
+
+    <div class="footer">
+        <a href="contactUs.html">Contact support</a>
+    </div>
+</body>
 
     <div class="footer"> <!--Will go back and make contact support page-->
         <a href="contactUs.html">Contact support</a>
