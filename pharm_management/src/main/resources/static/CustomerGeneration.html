@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Management</title>
+    <script src="js/customerManagement.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Customer Management</h1>
+        <p>Create, edit, or remove customers from the system.</p>
+
+        <form id="customerForm">
+            <label>First Name:</label>
+            <input type="text" id="firstName" required>
+
+            <label>Last Name:</label>
+            <input type="text" id="lastName" required>
+
+            <label>Date of Birth:</label>
+            <input type="date" id="dob" required>
+
+            <button type="submit">Add Customer</button>
+        </form>
+
+        <h2>Existing Customers</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Date of Birth</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="customerTable">
+                <!-- Customers will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

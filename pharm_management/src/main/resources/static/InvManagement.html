@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory Management</title>
+    <script src="js/inventory.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Inventory Management</h1>
+        <p>Manage medications in the system.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Medication Name</th>
+                    <th>Quantity</th>
+                    <th>Expiration Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="inventoryTable">
+                <!-- Inventory items will be dynamically inserted here -->
+            </tbody>
+        </table>
+        <button onclick="addNewItem()">Add Medication</button>
+    </div>
+</body>
+</html>
