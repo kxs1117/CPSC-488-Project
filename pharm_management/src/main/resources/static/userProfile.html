@@ -10,15 +10,14 @@
 <body>
     <div class="header">
         <div> <!-- Left side -->
-            <p>Pharmacy Management System</p>
+            <p>Eir Pharma Management</p>
         </div>
         <div class="nav-links"> <!-- Right side -->
-            <a href="userProfile.html">My profile</a>
+            <a href="home.html">Home</a>
             <a href="login.html">Sign Out</a>
         </div>
     </div>
 
-    <!-- Main container for the content -->
     <div class="container">
         <div class="section">
             <h2 id="userGreet">Welcome!</h2>
@@ -39,15 +38,20 @@
             <form id="contactForm">
                 <label>Date of birth:</label>
                 <input type="date" id="DOBinput" name="DOBinput">
+                <span id="DOBmessage"></span>						
+				<span id="DOBerror"></span>	
                 
                 <label>Phone Number:</label>
                 <input type="tel" id="phoneInput" name="phoneInput" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+                <span id="phoneMessage"></span>
 
                 <label>Address:</label>
                 <input type="text" id="addressInput" name="addressInput">
+                <span id="addressMessage"></span>
                 
                 <label>License:</label>
                 <input type="text" id="licenseInput" name="licenseInput">
+                <span id="licenseMessage"></span>
 
                 <button type="submit">Update Contact Information</button>
             </form>
@@ -61,6 +65,7 @@
 
                 <label>New Password:</label>
                 <input type="password" id="newPassword" name="newPassword" required>
+                <span id="passwordError"></span>
                 
                 <label>Confirm New Password:</label>
                 <input type="password" id="reNewPassword" name="reNewPassword" required>
@@ -68,10 +73,6 @@
                 <button type="submit">Change Password</button>
             </form>
         </div>
-    </div>
-
-    <div class="footer">
-        <a href="contactUs.html">Contact support</a>
     </div>
 </body>
 </html>

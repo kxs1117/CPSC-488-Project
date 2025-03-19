@@ -7,10 +7,10 @@ function displayDate()
 
     const date = new Date()
 
-  const month = date.getMonth()
-  const day = date.getDate()
-  const year = date.getFullYear()
- dateElement.textContent = `${months[month]} ${day}, ${year}`
+    const month = date.getMonth()
+    const day = date.getDate()
+    const year = date.getFullYear()
+    dateElement.textContent = `${months[month]} ${day}, ${year}`
     
 }
 
@@ -20,7 +20,6 @@ mainContainer.addEventListener('click', function(event) {
    //Need to implement back end authentification to check if user has correct role to enter requested page.
 }
 });
-
 
 displayDate();
 

@@ -36,12 +36,10 @@ function validUserDOB(date)
     if (year >= 1935 && year <= 2007)
     {
         DOBerror.textContent = "";
-        DOBdisplay.textContent = date.value;
-        return true;        
+        DOBdisplay.textContent = date.value;    
     
     } else {
-        DOBerror.textContent = "Date of birth must be between 1935 and 2007.";
-       return false;   
+        DOBerror.textContent = "Date of birth must be between 1935 and 2007.";  
     }
 }
 
@@ -50,14 +48,13 @@ function checkPassword(password, newPassword, reNewPassword)
 {
     passwordError.textContent = '';
     
-    //When back end is implemented have password variable check with password in database to proceed with function. At end of function update new password into database.
+    //When back end is implemented have password variable check with password in database to proceed with function. 
 
     if (newPassword.value !== reNewPassword.value) {
         passwordError.textContent = 'Passwords do not match.';
        
     } else if (newPassword.value.length < 8 || !/\d/.test(newPpassword.value)) {
         passwordError.textContent = 'Please ensure that the password is eight characters long and contains at least one digit.';
-       
     } 
 }
 

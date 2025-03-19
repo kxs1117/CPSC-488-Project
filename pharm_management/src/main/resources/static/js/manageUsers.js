@@ -1,4 +1,5 @@
 const addUserForm = document.getElementById('addUser');
+const userTableRows = document.getElementById('userTableRows');
 
 const email = document.getElementById('email');
 const emailError = document.getElementById('emailError');
@@ -12,11 +13,9 @@ const passwordError = document.getElementById('passwordError');
 
 const role = document.getElementById('role');
 
-//const table = document.getElementById('userTable');
-
 function checkPassword(password, confirmPassword, passwordError)
 {
-    //Needed for ensuring password meets requirements before storing in back end. 
+    //Needed for ensuring password meets requirements before storing in back end.
     if (password.value !== confirmPassword.value) {
         passwordError.textContent = 'Passwords do not match.';
         return false;
@@ -48,30 +47,22 @@ function checkEmail(email, emailError)
     }
 }
 
-function createTableRow() 
-{
-    //Will have to implement back end request to delete user from DB when deleting from table.
+function createTableRow() {
     const tbody = document.getElementById('userTableRows');
     const newRow = tbody.insertRow();
-
-    const cell1 = newRow.insertCell(0);
-    const cell2 = newRow.insertCell(1);
-    const cell3 = newRow.insertCell(2);
-    const cell4 = newRow.insertCell(3);
-    const cell5 = newRow.insertCell(4);
-
-    cell1.innerHTML = email.value
-    cell2.innerHTML = firstName.value
-    cell3.innerHTML = lastName.value
-    cell4.innerHTML = role.value
-    cell5.innerHTML = '<button class="action-delete">Delete</button>'
-
+    
+    newRow.innerHTML = `<td>${email.value}</td>
+                        <td>${firstName.value}</td>
+                        <td>${lastName.value}</td>
+                        <td>${role.value}</td>
+                        <td><button class="delete">Delete</button></td>`;
+    
     addUserForm.reset();
 }
 
-document.getElementById('userTableRows').addEventListener('click', function(event) 
+userTableRows.addEventListener('click', function(event) 
 {
-    if (event.target.classList.contains('action-delete')) {
+    if (event.target.classList.contains('delete')) {
         event.target.closest('tr').remove();
     }
 });
