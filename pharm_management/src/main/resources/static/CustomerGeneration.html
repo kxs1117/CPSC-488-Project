@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> <!--Create separate containers for the customer input and display table so that the custome input isn't same size-->
     <meta charset="UTF-8">
     <title>Customer Management</title>
     <script src="js/customerManagement.js" defer></script>
-    <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="header">
@@ -23,14 +23,20 @@
         <p>Create, edit, or remove customers from the system.</p>
 
         <form id="customerForm">
-            <label>First Name:</label>
+            <label>First name:</label>
             <input type="text" id="firstName" required>
 
-            <label>Last Name:</label>
+            <label>Last name:</label>
             <input type="text" id="lastName" required>
 
-            <label>Date of Birth:</label>
+            <label>Date of birth:</label>
             <input type="date" id="dob" required>
+
+            <label>Existing medications: </label>
+            <input type="text" id="meds" required>
+
+            <label>Insurance provider: </label>
+            <input type="text" id="insurance" required>
 
             <button type="submit">Add Customer</button>
         </form>
@@ -39,9 +45,12 @@
         <table>
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Date of Birth</th>
-                    <th>Actions</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Date of birth</th>
+                    <th>Medications</th>
+                    <th>Insurance</th>
+                    <th>Delete user</th>
                 </tr>
             </thead>
             <tbody id="customerTable">

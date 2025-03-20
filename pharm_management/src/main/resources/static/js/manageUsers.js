@@ -48,8 +48,7 @@ function checkEmail(email, emailError)
 }
 
 function createTableRow() {
-    const tbody = document.getElementById('userTableRows');
-    const newRow = tbody.insertRow();
+    const newRow = userTableRows.insertRow();
     
     newRow.innerHTML = `<td>${email.value}</td>
                         <td>${firstName.value}</td>

@@ -14,12 +14,14 @@ function displayDate()
     
 }
 
+//Need to go back and rework when implementing back end authentification to check if user has correct role to enter requested page.
+/*
 mainContainer.addEventListener('click', function(event) {
 
   if (event.target.tagName === 'A') {
-   //Need to implement back end authentification to check if user has correct role to enter requested page.
+   
 }
-});
+}); */
 
 displayDate();
 

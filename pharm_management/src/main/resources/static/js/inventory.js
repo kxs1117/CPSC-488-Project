@@ -1,24 +1,75 @@
-document.addEventListener("DOMContentLoaded", loadInventory);
 
-function loadInventory() {
-    const inventoryTable = document.getElementById("inventoryTable");
-    // Sample inventory data
-    const inventory = [
-        { name: "Aspirin", quantity: 50, expiration: "2025-06-12" },
-        { name: "Ibuprofen", quantity: 30, expiration: "2024-12-05" }
-    ];
+const drug = document.getElementById('drug');
+
+const brand = document.getElementById('brand');
+
+const type = document.getElementById('type');
+
+const dose = document.getElementById('dose');
+
+const dateAdded = document.getElementById('dateAdded');
+
+const expiration = document.getElementById('expiration');
+
+const amount = document.getElementById('amount');
+
+const cost = document.getElementById('cost');
+
+const reLevel = document.getElementById('reLevel');
+
+const tbody = document.getElementById('inventoryTable');
+
+const addMed = document.getElementById('addmed')
+
+
+
+
+
+function createTableRow() {
+
+    const newRow = tbody.insertRow();
     
-    inventory.forEach(item => {
-        let row = inventoryTable.insertRow();
-        row.innerHTML = `<td>${item.name}</td><td>${item.quantity}</td><td>${item.expiration}</td>
-                         <td><button onclick="removeItem(this)">Remove</button></td>`;
-    });
+    newRow.innerHTML = `<td>${drug.value}</td>
+                        <td>${brand.value}</td>
+                        <td>${type.value}</td>
+                        <td>${dose.value}</td>
+                        <td>${dateAdded.value}</td>
+                        <td>${expiration.value}</td>
+                        <td>${amount.value}</td>
+                        <td>${cost.value}</td>
+                        <td>${reLevel.value}</td>
+                        <td><button class="delete">Delete</button></td>`;
+    addMed.reset();
 }
 
-function removeItem(button) {
-    button.parentElement.parentElement.remove();
-}
 
-function addNewItem() {
-    alert("Add new medication functionality not implemented yet!");
-}
+tbody.addEventListener('click', function(event) 
+{
+    if (event.target.classList.contains('delete')) {
+        event.target.closest('tr').remove();
+    }
+});
+
+addMed.addEventListener('submit', function(event)
+{
+    event.preventDefault();
+
+    createTableRow();
+});    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
