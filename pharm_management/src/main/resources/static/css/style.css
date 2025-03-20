@@ -103,6 +103,11 @@ table tr:hover {
     background: #d3d2d2;
 }
 
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
 
 /* Header bar at the top of the page, might need to adjust this using different resolutions */
 .header {
