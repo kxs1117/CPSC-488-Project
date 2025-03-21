@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.pharm_management.pharm_management.PharmManagementApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.191 s -- in com.pharm_management.pharm_management.PharmManagementApplicationTests
