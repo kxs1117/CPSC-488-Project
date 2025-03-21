@@ -3,14 +3,14 @@ const form = document.getElementById('registrationForm');
 const email = document.getElementById('email');
 const emailError = document.getElementById('emailError');
 
-const firstName = document.getElementById('firstName');     //Use later for sending to back end.
-const lastName = document.getElementById('lastName');       //Use later for sending to back end.
+const firstName = document.getElementById('firstName');     
+const lastName = document.getElementById('lastName');       
     
 const password = document.getElementById('password');
 const confirmPassword = document.getElementById('confirmPassword');
 const passwordError = document.getElementById('passwordError');
 	
-//Functions
+
 function checkPassword(password, confirmPassword, passwordError)
 {
     if (password.value !== confirmPassword.value) {
@@ -29,7 +29,7 @@ function checkPassword(password, confirmPassword, passwordError)
 
 function checkEmail(email, emailError)
 {
-    //Reference for RE: MDN and builtin.
+    
     const regex = /@.*\.(com|net|org|gov|edu|mil)$/;
     
     if (!regex.test(email.value)) {
@@ -42,7 +42,7 @@ function checkEmail(email, emailError)
     }
 }
 
-//Event listener
+
 form.addEventListener('submit', function(event) 
 {
 	event.preventDefault();
@@ -53,7 +53,7 @@ form.addEventListener('submit', function(event)
     
 		
 	if (isEmailValid && isPasswordValid) {
-		//Redirect for now. Go back later and update with back end code.
+		
         window.location.href = 'manageUsers.html'; 
     }
 });

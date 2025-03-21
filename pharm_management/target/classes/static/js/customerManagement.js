@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", loadCustomers);
 function loadCustomers() {
     const customerTable = document.getElementById("customerTable");
 
-    // Sample customer data
+    
     const customers = [
         { firstName: "John", lastName: "Doe", dob: "1990-05-22", meds: "Nexium, Gabapentin", insurance: "Aetna Medicare Advantage"},
         { firstName: "Jane", lastName: "Smith", dob: "2000-10-15", meds: "Prednisone", insurance: "UPMC For You" }

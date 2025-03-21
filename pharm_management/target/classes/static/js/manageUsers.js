@@ -15,7 +15,7 @@ const role = document.getElementById('role');
 
 function checkPassword(password, confirmPassword, passwordError)
 {
-    //Needed for ensuring password meets requirements before storing in back end.
+    
     if (password.value !== confirmPassword.value) {
         passwordError.textContent = 'Passwords do not match.';
         return false;
@@ -32,9 +32,7 @@ function checkPassword(password, confirmPassword, passwordError)
 
 function checkEmail(email, emailError)
 {
-    //Expand function when implementing back end so that it incorporates checking if given email already exists.
 
-    //Reference for RE: MDN and builtin.
     const regex = /@.*\.(com|net|org|gov|edu|mil)$/;
     
     if (!regex.test(email.value)) {
@@ -74,7 +72,7 @@ addUserForm.addEventListener('submit', function(event)
         
         const isPasswordValid = checkPassword(password, rePassword, passwordError);
 
-        //Implement back end request to add user.
+       
         
         if (isEmailValid && isPasswordValid) {
           createTableRow()

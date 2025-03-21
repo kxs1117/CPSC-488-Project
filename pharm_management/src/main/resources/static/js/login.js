@@ -14,10 +14,10 @@ loginForm.addEventListener('keydown', function (event)
 
 loginForm.addEventListener('submit', function (event) 
 {
-    event.preventDefault(); //Test wether this is needed or not
+    event.preventDefault(); 
     window.location.href = 'home.html'; 
 
-    //Implement backend request call for user validation.
+  
 
 });
 

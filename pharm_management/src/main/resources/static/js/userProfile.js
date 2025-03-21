@@ -1,13 +1,13 @@
 
 const contactForm = document.getElementById('contactForm');
 
-//User info inputs
+
 const DOBinput = document.getElementById('DOBinput');
 const phoneInput = document.getElementById('phoneInput');
 const addressInput = document.getElementById('addressInput');
 const licenseInput = document.getElementById('licenseInput');
 
-//Event messages for input 
+
 const DOBmessage = document.getElementById('DOBmessage');
 const phoneMessage = document.getElementById('phoneMessage');
 const addressMessage = document.getElementById('addressMessage');
@@ -15,19 +15,19 @@ const licenseMessage = document.getElementById('licenseMessage');
 
 const DOBerror = document.getElementById('DOBerror');
 
-//Display user info
+
 const DOBdisplay = document.getElementById('DOBdisplay');
 const phoneDisplay = document.getElementById('phoneDisplay');
 const addressDisplay = document.getElementById('addressDisplay');
 const licenseDisplay = document.getElementById('licenseDisplay');
 const permissionsDisplay = document.getElementById('permissionsDisplay');
 
-//Inputs for password change
+
 const password = document.getElementById('password');
 const newPassword = document.getElementById('newPassword');
 const reNewPassword = document.getElementById('reNewPassword');
 
-//Check that DOB is in date range
+
 function validUserDOB(date)
 {
     const enteredDate = new Date(date.value);
@@ -43,12 +43,12 @@ function validUserDOB(date)
     }
 }
 
-//Check password matches and meets requirements.
+
 function checkPassword(password, newPassword, reNewPassword)
 {
     passwordError.textContent = '';
     
-    //When back end is implemented have password variable check with password in database to proceed with function. 
+    
 
     if (newPassword.value !== reNewPassword.value) {
         passwordError.textContent = 'Passwords do not match.';
