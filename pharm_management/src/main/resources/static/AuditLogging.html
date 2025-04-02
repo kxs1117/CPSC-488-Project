@@ -3,36 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>Audit Logging</title>
-    <script src="js/auditLogs.js" defer></script>
-    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/auditLogs.js" defer></script>
 </head>
 <body>
     <div class="header">
-        <div> 
-            <p>Pharmacy Management</p>
+        <div class="logo">
+            <h1>Audit Logging</h1>
         </div>
-        <div class="nav-links"> 
-            <a href="userProfile.html">My profile</a>
-            <a href="home.html">Home</a>
-            <a href="login.html">Sign Out</a>
+        <div class="nav-links">
+            <a href="home.html">Dashboard</a>
+            <a href="login.html" id="logoutButton">Sign Out</a>
         </div>
     </div>
-    
-    <div class="container">
-        <h1>Audit Logs</h1>
-        <p>View the history of system actions.</p>
 
-        <table>
+    <div class="container">
+        <h2>Generate Fraud Report</h2>
+        <p>Select a date range to identify suspicious dispensing activities.</p>
+
+        <div class="form-group">
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate">
+        </div>
+
+        <div class="form-group">
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate">
+        </div>
+
+        <button onclick="generateReport()">Generate Report</button>
+
+        <h3>Audit Results</h3>
+        <table id="auditTable">
             <thead>
                 <tr>
-                    <th>Timestamp</th>
-                    <th>User</th>
-                    <th>Action</th>
+                    <th>Date</th>
+                    <th>Pharmacist</th>
+                    <th>Customer</th>
+                    <th>Medication</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
                 </tr>
             </thead>
-            <tbody id="auditTable">
-                
-            </tbody>
+            <tbody></tbody>
         </table>
     </div>
 </body>
