@@ -2,35 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dispensing Data</title>
-    <script src="/js/dispensingData.js" defer></script>
-    <link rel="stylesheet" href="/css/style.css">
+    <title>Dispense Medication</title>
+    <link rel="stylesheet" href="css/dispensestyle.css">
+    <script src="js/dispensingData.js" defer></script>
 </head>
 <body>
+    <!-- Header -->
     <div class="header">
-        <p>Pharmacist - Dispensing Data</p>
+        <h1>Pharmacist - Dispensing Data</h1>
         <button id="logoutButton">Logout</button>
     </div>
 
+    <!-- Main Content -->
     <div class="container">
         <h2>Dispense Medication</h2>
         <p>Click "Dispense" to confirm that a patient has received their medication.</p>
 
-        <table>
+        <!-- Action Button -->
+        <div class="action-bar">
+            <button id="openFormBtn">Add Patient</button>
+        </div>
+
+        <!-- Patient Table -->
+        <table id="dispenseTable">
             <thead>
                 <tr>
                     <th>Patient Name</th>
                     <th>Medication</th>
                     <th>Dosage</th>
                     <th>Quantity</th>
+                    <th>Frequency</th>
+                    <th>Last Dispensed</th>
+                    <th>Next Eligible</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody id="dispensingTable">
-                
-            </tbody>
+            <tbody></tbody>
         </table>
+    </div>
+
+    <!-- Modal Add Patient Form -->
+    <div id="formModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Add Patient</h3>
+            <form id="addPatientForm">
+                <input type="text" id="patientName" placeholder="Patient Name" required />
+                <input type="text" id="medication" placeholder="Medication Name" required />
+                <input type="text" id="dosage" placeholder="Dosage (e.g., 100mg)" required />
+                <input type="number" id="quantity" placeholder="Quantity" required />
+                <input type="number" id="frequency" placeholder="Refill Frequency (days)" required />
+                <button type="submit">Add Patient</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>
+
