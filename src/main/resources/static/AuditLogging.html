@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Audit Logging</title>
+    <script src="js/auditLogs.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="header">
+        <div> 
+            <p>Pharmacy Management</p>
+        </div>
+        <div class="nav-links"> 
+            <a href="userProfile.html">My profile</a>
+            <a href="home.html">Home</a>
+            <a href="login.html">Sign Out</a>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h1>Audit Logs</h1>
+        <p>View the history of system actions.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Timestamp</th>
+                    <th>User</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="auditTable">
+                
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

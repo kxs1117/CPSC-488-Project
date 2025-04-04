@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory Management</title>
+    <link rel="stylesheet" href="css/inventorystyle.css">
+    <script src="js/inventory.js" defer></script>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <h1>Inventory Management</h1>
+        </div>
+        <div class="nav-links">
+            <a href="home.html">Dashboard</a>
+            <a href="login.html" id="logoutButton">Sign Out</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="inventory-controls">
+            <button onclick="showAddForm()">Add Medication</button>
+        </div>
+
+        <h2>Current Inventory</h2>
+        <div class="table-container">
+            <table id="inventoryTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Brand</th>
+                        <th>Type</th>
+                        <th>Dose</th>
+                        <th>Form</th>
+                        <th>Input date</th>
+                        <th>Expiration date</th>
+                        <th>Stock</th>
+                        <th>Cost per pill</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Medication rows will be inserted here by JS -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Add/Edit Medication Form (hidden by default) -->
+        <div id="medFormSection" style="display:none;">
+            <h3 id="formTitle">Add Medication</h3>
+            <form id="medForm">
+                <input type="hidden" id="medId">
+                <label>Name: <input type="text" id="medName" required></label><br>
+                <label>Brand: <input type="text" id="medBrand" required></label><br>
+                <label>Type: <input type="text" id="medType" required></label><br>
+                <label>Dose: <input type="text" id="medDose" required></label><br>
+                <label>Form: <input type="text" id="medicationForm" required></label><br>
+                <label>Expiration date: <input type="date" id="expire" required></label><br>
+                <label>Stock: <input type="number" id="medStock" required></label><br>
+                <label>Cost per pill: <input type="text" id="cost" required></label><br>
+                <button type="submit">Save</button>
+                <button type="button" onclick="hideMedForm()">Cancel</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

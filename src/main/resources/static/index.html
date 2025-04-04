@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Creation</title>
+	<script src="js/adminCreation.js" defer></script>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Pharmacy Management</h1>
+        <h2>Administrator Account Creation</h2>
+        <p>Please ensure that your password is eight characters in length and contains one digit.</p>
+
+        <br>
+        <span id="error"></span>
+        <br>
+
+
+        <form id="registrationForm">
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="text" name="email" id="email" />
+                <span id="emailError"></span>
+            </div>
+
+            <div class="form-group">
+                <label>First Name:</label>
+                <input type="text" name="firstName" id="firstName" required />
+            </div>
+
+            <div class="form-group">
+                <label>Last Name:</label>
+                <input type="text" name="lastName" id="lastName" required />
+            </div>
+
+            <div class="form-group">
+                <label>Password:</label>
+                <input type="password" name="password" id="password" required />
+                <span id="passwordError"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Confirm Password:</label>
+                <input type="password" name="confirmPassword" id="confirmPassword" required />
+            </div>
+
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+</body>
+</html>
