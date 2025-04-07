@@ -28,12 +28,18 @@
 
             <label>Last name:</label>
             <input type="text" id="lastName" required>
+ 
+            <label>Email:</label>
+                <input type="text" id="email" required>
+                <span id="emailError"></span>
 
-            <label>Date of birth:</label>
-            <input type="date" id="dob" required>
+            <label>Phone Number:</label> 
+            <input type="tel" id="phoneInput" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                <span id="phoneMessage"></span>
 
-            <label>Existing medications: </label>
-            <input type="text" id="meds" required>
+            <label>Address:</label>
+            <input type="text" id="addressInput" required> 
+            <span id="addressMessage"></span>
 
             <label>Insurance provider: </label>
             <input type="text" id="insurance" required>
@@ -47,10 +53,10 @@
                 <tr>
                     <th>First name</th>
                     <th>Last name</th>
-                    <th>Date of birth</th>
-                    <th>Medications</th>
+                    <th>Email</th>
+                    <th>Phone number</th>
+                    <th>Address</th>
                     <th>Insurance</th>
-                    <th>Delete user</th>
                 </tr>
             </thead>
             <tbody id="customerTable">
@@ -60,3 +66,4 @@
     </div>
 </body>
 </html>
+           

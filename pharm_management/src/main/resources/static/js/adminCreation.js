@@ -1,17 +1,17 @@
-const form = document.getElementById('registrationForm');
+//Refernces: MDN Web Docs, jasonwatmore, youngmonkeys, Spring Cloud,
 
+//Since this page is simple/straightforward and the vars are used in multiple functions just leave them as global for now.
+const form = document.getElementById('registrationForm');
 const email = document.getElementById('email');
 const emailError = document.getElementById('emailError');
-
 const firstName = document.getElementById('firstName');     
 const lastName = document.getElementById('lastName');       
-    
 const password = document.getElementById('password');
 const confirmPassword = document.getElementById('confirmPassword');
 const passwordError = document.getElementById('passwordError');
 	
-
-function checkPassword(password, confirmPassword, passwordError)
+//Check password that user has given. Disable for presentation so demo back-end backup function can be shown
+function checkPassword()
 {
     if (password.value !== confirmPassword.value) {
         passwordError.textContent = 'Passwords do not match.';
@@ -22,14 +22,14 @@ function checkPassword(password, confirmPassword, passwordError)
         return false;
         
     } else {
-        passwordError.textContent = '';
+        passwordError.textContent = ''; //Clear the error text if it exist and the password is correct.
         return true;
     }
 }
-
-function checkEmail(email, emailError)
+ 
+//Check email format that user has given is correct. Disable for presentation so demo back-end backup function can be shown
+function checkEmail()
 {
-    
     const regex = /@.*\.(com|net|org|gov|edu|mil)$/;
     
     if (!regex.test(email.value)) {
@@ -37,24 +37,55 @@ function checkEmail(email, emailError)
         return false;
         
     } else {
-        emailError.textContent = "";    
+        emailError.textContent = "";    //Clear the error text if it exist and the email is correct. 
         return true;
     }
 }
 
+/*POST fetch function to create the admin user and store it in database.Returns error if 
+there is a formatting error or if a database error occurs and alerts the user on the screen.
+If the reponse is ok, redirect the new admin to user creation page.*/
 
+function createAdmin()  
+{
+    fetch('/admin/create_admin', {                          
+        method: 'POST',                                     //POST is used for sending data to server to create a resource.
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },                                                  //Header tells server that the request body will be in JSON format.
+        body: JSON.stringify({                             
+            email: email.value,
+            firstName: firstName.value,
+            lastName: lastName.value,
+            password: password.value
+        })
+    })
+    .then(response => {                                                     .
+        if (!response.ok) {                                                 //If the response is not ok, get the error message and throw it with the HTTP status.
+            return response.json().then(error => {                          
+                throw new Error(`Error ${response.status}: ${error.Error1 || error.Error2}`);   //Error1 is the message of IllegalArgumentException and error2 is the message of DataAccessException.
+            });
+        }                       
+        window.location.href = '/manageUsers.html';
+    })
+    .catch(error => {
+        document.getElementById('error').textContent = error.message;
+    });
+}
+
+//Event listener to submit info to back end via POST function. Disabled JS email and password functions for back-end function demo.
 form.addEventListener('submit', function(event) 
 {
-	event.preventDefault();
-		
-	const isEmailValid = checkEmail(email, emailError);
-		
+	event.preventDefault(); 
+	
+	/*const isEmailValid = checkEmail(email, emailError);
 	const isPasswordValid = checkPassword(password, confirmPassword, passwordError);
+    (isEmailValid && isPasswordValid) {}*/
     
-		
-	if (isEmailValid && isPasswordValid) {
-		
-        window.location.href = 'manageUsers.html'; 
-    }
+    createAdmin(); 
 });
 
+
+    
+    

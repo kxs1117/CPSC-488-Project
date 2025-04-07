@@ -17,11 +17,14 @@
             <a href="home.html">Home</a>
             <a href="login.html">Sign Out</a>
         </div>
-    </div>
+    </div> 
 
 <div class="container">
     <div class="form-container">
         <h2>Create New User</h2>
+        <br>
+        <span id="backEndError"></span>
+        <br>
         <form id="addUser">
             <div class="form-group">
                 <label>Email:</label>
@@ -74,10 +77,11 @@
                     <th>First name</th>
                     <th>Last name</th>
                     <th>Role</th>
+                    <th>Creation Date</th>
                     <th>Delete user</th>
                 </tr>
             </thead>
-            <tbody id="userTableRows"></tbody>
+            <tbody id="tbody"></tbody>
         </table>
     </div>
 </div>

@@ -1,9 +1,12 @@
-C:\Users\dukel\OneDrive\Desktop\CPSC-488-Project-main\pharm_management\src\main\java\com\pharm_management\controller\AdminSetupController.java
-C:\Users\dukel\OneDrive\Desktop\CPSC-488-Project-main\pharm_management\src\main\java\com\pharm_management\dto\AdminSetupRequest.java
-C:\Users\dukel\OneDrive\Desktop\CPSC-488-Project-main\pharm_management\src\main\java\com\pharm_management\model\Role.java
-C:\Users\dukel\OneDrive\Desktop\CPSC-488-Project-main\pharm_management\src\main\java\com\pharm_management\model\User.java
-C:\Users\dukel\OneDrive\Desktop\CPSC-488-Project-main\pharm_management\src\main\java\com\pharm_management\model\UsersModel.java
-C:\Users\dukel\OneDrive\Desktop\CPSC-488-Project-main\pharm_management\src\main\java\com\pharm_management\PharmManagementApplication.java
-C:\Users\dukel\OneDrive\Desktop\CPSC-488-Project-main\pharm_management\src\main\java\com\pharm_management\repository\RoleRepository.java
-C:\Users\dukel\OneDrive\Desktop\CPSC-488-Project-main\pharm_management\src\main\java\com\pharm_management\repository\UserRepository.java
-C:\Users\dukel\OneDrive\Desktop\CPSC-488-Project-main\pharm_management\src\main\java\com\pharm_management\repository\UsersRepository.java
+C:\Users\guerr\OneDrive\Desktop\Back end work\CPSC-488-Project\pharm_management\src\main\java\com\pharm_management\controller\AdminCreationController.java
+C:\Users\guerr\OneDrive\Desktop\Back end work\CPSC-488-Project\pharm_management\src\main\java\com\pharm_management\controller\UserManageController.java
+C:\Users\guerr\OneDrive\Desktop\Back end work\CPSC-488-Project\pharm_management\src\main\java\com\pharm_management\controller\UserProfileManageController.java
+C:\Users\guerr\OneDrive\Desktop\Back end work\CPSC-488-Project\pharm_management\src\main\java\com\pharm_management\dto\AdminRegDTO.java
+C:\Users\guerr\OneDrive\Desktop\Back end work\CPSC-488-Project\pharm_management\src\main\java\com\pharm_management\dto\UserCreationDTO.java
+C:\Users\guerr\OneDrive\Desktop\Back end work\CPSC-488-Project\pharm_management\src\main\java\com\pharm_management\dto\UserDTO.java
+C:\Users\guerr\OneDrive\Desktop\Back end work\CPSC-488-Project\pharm_management\src\main\java\com\pharm_management\model\User.java
+C:\Users\guerr\OneDrive\Desktop\Back end work\CPSC-488-Project\pharm_management\src\main\java\com\pharm_management\PharmManagementApplication.java
+C:\Users\guerr\OneDrive\Desktop\Back end work\CPSC-488-Project\pharm_management\src\main\java\com\pharm_management\repository\UserRepository.java
+C:\Users\guerr\OneDrive\Desktop\Back end work\CPSC-488-Project\pharm_management\src\main\java\com\pharm_management\service\AdminCreationService.java
+C:\Users\guerr\OneDrive\Desktop\Back end work\CPSC-488-Project\pharm_management\src\main\java\com\pharm_management\service\ManageUsersService.java
+C:\Users\guerr\OneDrive\Desktop\Back end work\CPSC-488-Project\pharm_management\src\main\java\com\pharm_management\service\UserProfileManageService.java

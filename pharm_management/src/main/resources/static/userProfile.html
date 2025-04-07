@@ -17,24 +17,34 @@
             <a href="login.html">Sign Out</a>
         </div>
     </div>
-
+ 
     <div class="container">
         <div class="section">
             <h2 id="userGreet">Welcome!</h2>
-            <span id="accountInfo">Role: (Users role type). Account created: 1/01/2025</span>
+            <span id="accountInfo"></span> <!--Have users name displayed here-->
         </div>
 
         <div class="section">
             <h3>Personal Information</h3>
+            
+            <span id="backEndError"></span>
+            <br>
+
             <p>Date of birth: <span id="DOBdisplay"></span></p>
             <p>Phone Number: <span id="phoneDisplay"></span></p>
             <p>Address: <span id="addressDisplay"></span></p>
-            <p>License Number: <span id="licenseDisplay"></span></p>
-            <p>Permissions: <span id="permissionsDisplay"></span></p>
+            <p>License Number: <span id="licenseDisplay"></span></p>  
+        <!--    <p>Permissions: <span id="permissionsDisplay"></span></p>               Add this back later when role checking is implemented--> 
         </div>
 
         <div class="section">
+
+            <br>
             <h3>Update Information</h3>
+            <br>
+            <span id="updateInfoError"></span>
+            <br>
+
             <form id="contactForm">
                 <label>Date of birth:</label>
                 <input type="date" id="DOBinput" name="DOBinput">
@@ -58,7 +68,11 @@
         </div>
 
         <div class="section">
+            <br>
+            <span id="updatePassErr"></span>
+            <br>
             <h3>Reset password</h3>
+            <br><br>
             <form id="passwordForm">
                 <label>Current password:</label>
                 <input type="password" id="password" name="password" required>

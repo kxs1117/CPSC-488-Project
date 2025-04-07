@@ -1,0 +1,141 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: #fff;
+    padding: 20px 40px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    color: rgb(25, 219, 129);
+    margin: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: rgb(25, 219, 129);
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.container {
+    padding: 40px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.inventory-controls {
+    margin-bottom: 20px;
+}
+
+.inventory-controls button {
+    background-color: rgb(25, 219, 129);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.inventory-controls button:hover {
+    background-color: #17b273;
+}
+
+.table-container {
+    overflow-x: auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+#inventoryTable {
+    width: 100%;
+    min-width: 900px;
+    border-collapse: collapse;
+}
+
+#inventoryTable th,
+#inventoryTable td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    white-space: nowrap;
+}
+
+#inventoryTable th {
+    background-color: rgb(25, 219, 129);
+    color: white;
+}
+
+#inventoryTable button {
+    padding: 6px 10px;
+    margin: 0 2px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+}
+
+#inventoryTable button:hover {
+    opacity: 0.8;
+}
+
+#inventoryTable button:first-child {
+    background-color: #ffc107;
+    color: black;
+}
+
+#inventoryTable button:last-child {
+    background-color: #dc3545;
+    color: white;
+}
+
+#medFormSection {
+    margin-top: 30px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+#medForm label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+#medForm input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#medForm button {
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+#medForm button[type="submit"] {
+    background-color: rgb(25, 219, 129);
+    color: white;
+}
+
+#medForm button[type="button"] {
+    background-color: #6c757d;
+    color: white;
+}
