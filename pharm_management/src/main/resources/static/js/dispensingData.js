@@ -1,29 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const patients = [
-        {
-            name: "John Doe",
-            medication: "Aspirin",
-            dosage: "100mg",
-            quantity: 30,
-            frequency: 30,
-            status: "Pending",
-            lastDispensed: null
-        },
-        {
-            name: "Jane Smith",
-            medication: "Metformin",
-            dosage: "500mg",
-            quantity: 60,
-            frequency: 60,
-            status: "Pending",
-            lastDispensed: null
-        }
-    ];
+    const patients = [];
 
     const tableBody = document.querySelector("#dispenseTable tbody");
     const form = document.getElementById("addPatientForm");
 
-    // Modal logic
     const modal = document.getElementById("formModal");
     const openBtn = document.getElementById("openFormBtn");
     const closeBtn = document.querySelector(".close");
@@ -37,17 +17,17 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         const name = document.getElementById("patientName").value.trim();
-        const med = document.getElementById("medication").value.trim();
-        const dose = document.getElementById("dosage").value.trim();
-        const qty = parseInt(document.getElementById("quantity").value);
-        const frequency = parseInt(document.getElementById("frequency").value);
+        const medication = document.getElementById("medication").value.trim();
+        const dosage = document.getElementById("dosage").value.trim();
+        const quantity = parseInt(document.getElementById("quantity").value, 10);
+        const frequency = parseInt(document.getElementById("frequency").value, 10);
 
-        if (name && med && dose && qty > 0 && frequency > 0) {
+        if (name && medication && dosage && quantity > 0 && frequency > 0) {
             patients.push({
                 name,
-                medication: med,
-                dosage: dose,
-                quantity: qty,
+                medication,
+                dosage,
+                quantity,
                 frequency,
                 status: "Pending",
                 lastDispensed: null
@@ -58,16 +38,54 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    tableBody.addEventListener("click", (e) => {
+    tableBody.addEventListener("click", async (e) => {
         if (e.target.classList.contains("dispenseBtn")) {
             const index = e.target.dataset.index;
             const patient = patients[index];
             const today = new Date();
 
-            patient.status = "Dispensed";
-            patient.lastDispensed = today.toISOString().split("T")[0];
+            const requestData = {
+                customerEmail: patient.name.toLowerCase().replace(/\s+/g, ".") + "@example.com",
+                medicationName: patient.medication,
+                quantity: patient.quantity,
+                lastDispensed: patient.lastDispensed
+            };
 
-            renderTable();
+            try {
+                const res = await fetch("/api/dispense/evaluateFraud", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(requestData)
+                });
+
+                if (!res.ok) throw new Error("Fraud detection service failed.");
+                const result = await res.json();
+
+                if (result.totalScore > 0) {
+                    alert(`FRAUD DETECTED:\n${result.reasons.join("\n")}`);
+                } else {
+                    alert("No fraud detected.");
+
+                    // Dispense Medication if no fraud
+                    const dispenseRes = await fetch("/api/dispense/dispenseMedication", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(requestData)
+                    });
+
+                    if (!dispenseRes.ok) {
+                        const errMessage = await dispenseRes.text();
+                        throw new Error(errMessage);
+                    }
+                    alert(await dispenseRes.text());
+
+                    patient.status = "Dispensed";
+                    patient.lastDispensed = today.toISOString().split("T")[0];
+                    renderTable();
+                }
+            } catch (err) {
+                alert("Error: " + err.message);
+            }
         }
     });
 
@@ -79,7 +97,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function renderTable() {
-        // Sort by next eligible dispense date
         patients.sort((a, b) => {
             const aNext = a.lastDispensed ? new Date(a.lastDispensed) : new Date(0);
             const bNext = b.lastDispensed ? new Date(b.lastDispensed) : new Date(0);

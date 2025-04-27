@@ -3,60 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Inventory Management</title>
+    <script src="/js/inventory.js" defer></script>
     <link rel="stylesheet" href="css/inventorystyle.css">
-    <script src="js/inventory.js" defer></script>
 </head>
 <body>
-    <div class="header">
-        <div class="logo">
-            <h1>Inventory Management</h1>
-        </div>
-        <div class="nav-links">
-            <a href="home.html">Dashboard</a>
-            <a href="login.html" id="logoutButton">Sign Out</a>
-        </div>
-    </div>
+    <h1>Inventory Management</h1>
 
-    <div class="container">
-        <div class="inventory-controls">
-            <button onclick="showAddForm()">Add Medication</button>
-        </div>
+    <form id="addMedForm">
+        <input type="text" id="name" placeholder="Name" required><br><br>
+        <input type="text" id="type" placeholder="Type" required><br><br>
+        <input type="text" id="brand" placeholder="Brand" required><br><br>
+        <input type="text" id="medForm" placeholder="Form" required><br><br>
+        <input type="text" id="dose" placeholder="Dose" required><br><br>
+        <label for="expirationDate">Expiration Date:</label><br>
+        <input type="date" id="expirationDate" required><br><br>
+        <label for="dateAdded">Date Added:</label><br>
+        <input type="date" id="dateAdded" required><br><br>
+        <input type="number" id="stock" placeholder="Stock" required><br><br>
+        <input type="number" id="costPerPill" placeholder="Cost Per Pill" step="0.01" required><br><br>
+        <button type="submit">Add Medication</button>
+    </form>
 
-        <h2>Current Inventory</h2>
-        <div class="table-container">
-            <table id="inventoryTable">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Brand</th>
-                        <th>Type</th>
-                        <th>Dose</th>
-                        <th>Form</th>
-                        <th>Stock</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Medication rows will be inserted here by JS -->
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Add/Edit Medication Form (hidden by default) -->
-        <div id="medFormSection" style="display:none;">
-            <h3 id="formTitle">Add Medication</h3>
-            <form id="medForm">
-                <input type="hidden" id="medIndex">
-                <label>Name: <input type="text" id="medName" required></label><br>
-                <label>Brand: <input type="text" id="medBrand" required></label><br>
-                <label>Type: <input type="text" id="medType" required></label><br>
-                <label>Dose: <input type="text" id="medDose" required></label><br>
-                <label>Form: <input type="text" id="medForm" required></label><br>
-                <label>Stock: <input type="number" id="medStock" required></label><br>
-                <button type="submit">Save</button>
-                <button type="button" onclick="hideMedForm()">Cancel</button>
-            </form>
-        </div>
-    </div>
+    <h2>Inventory</h2>
+    <div class="table-container">
+        <table id="inventoryTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Brand</th>
+                <th>Form</th>
+                <th>Dose</th>
+                <th>Expiration Date</th>
+                <th>Date Added</th>
+                <th>Stock</th>
+                <th>Cost Per Pill</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="inventoryTableBody">
+            <!-- Inventory will load here -->
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

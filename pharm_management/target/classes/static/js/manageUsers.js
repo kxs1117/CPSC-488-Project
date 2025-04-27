@@ -1,80 +1,51 @@
-const addUserForm = document.getElementById('addUser');
-const userTableRows = document.getElementById('userTableRows');
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("createUserForm");
+    const statusMessage = document.getElementById("statusMessage");
+    const usersTable = document.querySelector("#usersTable tbody");
 
-const email = document.getElementById('email');
-const emailError = document.getElementById('emailError');
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-const firstName = document.getElementById('firstName');
-const lastName = document.getElementById('lastName');
+        const username = document.getElementById("username").value.trim();
+        const password = document.getElementById("password").value.trim();
+        const role = document.getElementById("role").value;
 
-const password = document.getElementById('password');
-const rePassword = document.getElementById('rePassword');
-const passwordError = document.getElementById('passwordError');
-
-const role = document.getElementById('role');
-
-function checkPassword(password, confirmPassword, passwordError)
-{
-    
-    if (password.value !== confirmPassword.value) {
-        passwordError.textContent = 'Passwords do not match.';
-        return false;
-    
-    } else if (password.value.length < 8 || !/\d/.test(password.value)) {
-        passwordError.textContent = 'Please ensure that the password is eight characters long and contains at least one digit.';
-        return false;
-
-    } else {
-        passwordError.textContent = '';
-        return true;
-    }
-}
-
-function checkEmail(email, emailError)
-{
-
-    const regex = /@.*\.(com|net|org|gov|edu|mil)$/;
-    
-    if (!regex.test(email.value)) {
-        emailError.textContent = "Please enter a valid email address (must include '@' and a valid domain).";
-        return false;
-
-    } else {
-        emailError.textContent = "";  
-        return true;
-    }
-}
-
-function createTableRow() {
-    const newRow = userTableRows.insertRow();
-    
-    newRow.innerHTML = `<td>${email.value}</td>
-                        <td>${firstName.value}</td>
-                        <td>${lastName.value}</td>
-                        <td>${role.value}</td>
-                        <td><button class="delete">Delete</button></td>`;
-    
-    addUserForm.reset();
-}
-
-userTableRows.addEventListener('click', function(event) 
-{
-    if (event.target.classList.contains('delete')) {
-        event.target.closest('tr').remove();
-    }
-});
-
-addUserForm.addEventListener('submit', function(event) 
-{
-        event.preventDefault();
-        
-        const isEmailValid = checkEmail(email, emailError);
-        
-        const isPasswordValid = checkPassword(password, rePassword, passwordError);
-
-       
-        
-        if (isEmailValid && isPasswordValid) {
-          createTableRow()
+        if (!username || !password || !role) {
+            statusMessage.textContent = "All fields are required.";
+            return;
         }
+
+        const response = await fetch("/api/users/create", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password, role })
+        });
+
+        const result = await response.text();
+
+        if (result === "success") {
+            statusMessage.textContent = "✅ User created successfully!";
+            form.reset();
+            loadUsers();
+        } else {
+            statusMessage.textContent = "❌ Error: " + result;
+        }
+    });
+
+    async function loadUsers() {
+        const response = await fetch("/api/users/all");
+        const users = await response.json();
+
+        usersTable.innerHTML = "";
+        users.forEach(user => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${user.username}</td>
+                <td>${user.role.roleType}</td>
+            `;
+            usersTable.appendChild(row);
+        });
+    }
+
+    loadUsers();
 });

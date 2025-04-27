@@ -1,30 +1,37 @@
-const loginForm = document.getElementById('login');
-const usernameMessage = document.getElementById('usernameMessage');
-const passwordMessage = document.getElementById('passwordMessage');
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("loginForm");
 
-loginForm.addEventListener('keydown', function (event) 
-{
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-    if (event.target.id === 'username') {
-        usernameMessage.textContent = 'Important: username requires an email format.';
-    } else if (event.target.id === 'password') {
-        passwordMessage.textContent = 'Important: Password should be 8 characters long and have a digit.';
-    }
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        const response = await fetch("/api/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: new URLSearchParams({
+                username,
+                password
+            })
+        });
+
+        const result = await response.text();
+
+        switch (result) {
+            case "admin":
+            case "manager":
+            case "pharmacist":
+            case "fraud_analyst":
+                window.location.href = "home.html"; // redirect to home
+                break;
+            default:
+                document.getElementById("loginError").textContent = "Invalid username or password.";
+        }
+    });
 });
-
-loginForm.addEventListener('submit', function (event) 
-{
-    event.preventDefault(); 
-    window.location.href = 'home.html'; 
-
-  
-
-});
-
-
-
-
-
 
 
 

@@ -11,9 +11,9 @@
         <h1>Pharmacy Management</h1>
         <p>Please log into the system.</p>
 
-        <form id="login">
+        <form id="loginForm">
             <div class="form-group">
-                <label>Username (email):</label>
+                <label>Username:</label>
                 <input type="text" name="username" id="username" required />
                 <span id="usernameMessage"></span>
             </div>
@@ -26,6 +26,8 @@
 
             <button type="submit">Login</button>
         </form>
+
+        <p id="loginError" style="color: red; margin-top: 10px;"></p>
     </div>
 </body>
 </html>

@@ -1,102 +1,96 @@
-let inventory = [
-    { name: "Amoxicillin", brand: "Moxatag", type: "Antibiotic", dose: "500mg", form: "Capsule", stock: 100 },
-    { name: "Ibuprofen", brand: "Advil", type: "NSAID", dose: "200mg", form: "Tablet", stock: 250 },
-    { name: "Acetaminophen", brand: "Tylenol", type: "Analgesic", dose: "500mg", form: "Tablet", stock: 300 },
-    { name: "Lisinopril", brand: "Prinivil", type: "ACE Inhibitor", dose: "10mg", form: "Tablet", stock: 150 },
-    { name: "Metformin", brand: "Glucophage", type: "Antidiabetic", dose: "850mg", form: "Tablet", stock: 200 },
-    { name: "Atorvastatin", brand: "Lipitor", type: "Statin", dose: "20mg", form: "Tablet", stock: 180 },
-    { name: "Omeprazole", brand: "Prilosec", type: "Proton Pump Inhibitor", dose: "40mg", form: "Capsule", stock: 140 },
-    { name: "Amlodipine", brand: "Norvasc", type: "Calcium Channel Blocker", dose: "5mg", form: "Tablet", stock: 160 },
-    { name: "Simvastatin", brand: "Zocor", type: "Statin", dose: "10mg", form: "Tablet", stock: 175 },
-    { name: "Albuterol", brand: "Ventolin", type: "Bronchodilator", dose: "90mcg", form: "Inhaler", stock: 60 },
-    { name: "Prednisone", brand: "Deltasone", type: "Corticosteroid", dose: "10mg", form: "Tablet", stock: 80 },
-    { name: "Levothyroxine", brand: "Synthroid", type: "Hormone", dose: "100mcg", form: "Tablet", stock: 220 },
-    { name: "Hydrochlorothiazide", brand: "Microzide", type: "Diuretic", dose: "25mg", form: "Tablet", stock: 90 },
-    { name: "Losartan", brand: "Cozaar", type: "ARB", dose: "50mg", form: "Tablet", stock: 130 },
-    { name: "Ciprofloxacin", brand: "Cipro", type: "Antibiotic", dose: "500mg", form: "Tablet", stock: 110 }
-];
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('addMedForm');
+    const inventoryTable = document.getElementById('inventoryTable').querySelector('tbody');
 
-document.addEventListener("DOMContentLoaded", () => {
-    renderInventory();
+    let editMode = false;
+    let editId = null;
 
-    document.getElementById("medForm").addEventListener("submit", function (e) {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const index = document.getElementById("medIndex").value;
-        const med = {
-            name: document.getElementById("medName").value,
-            brand: document.getElementById("medBrand").value,
-            type: document.getElementById("medType").value,
-            dose: document.getElementById("medDose").value,
-            form: document.getElementById("medForm").value,
-            stock: parseInt(document.getElementById("medStock").value)
+        const data = {
+            name: document.getElementById('name').value,
+            type: document.getElementById('type').value,
+            brand: document.getElementById('brand').value,
+            medForm: document.getElementById('medForm').value,
+            dose: document.getElementById('dose').value,
+            expirationDate: document.getElementById('expirationDate').value,
+            dateAdded: document.getElementById('dateAdded').value,
+            stock: document.getElementById('stock').value,
+            costPerPill: document.getElementById('costPerPill').value
         };
 
-        if (index === "") {
-            inventory.push(med);
-        } else {
-            inventory[parseInt(index)] = med;
+        try {
+            if (editMode) {
+                await fetch(`/api/inventory/update/${editId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                editMode = false;
+                editId = null;
+            } else {
+                await fetch('/api/inventory/add', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+            }
+            form.reset();
+            loadInventory();
+        } catch (error) {
+            console.error('Error:', error);
         }
-
-        hideMedForm();
-        renderInventory();
     });
 
-    document.getElementById("logoutButton").addEventListener("click", () => {
-        localStorage.removeItem("userRole");
-        window.location.href = "/login.html";
-    });
-});
+    async function loadInventory() {
+        inventoryTable.innerHTML = '';
+        const res = await fetch('/api/inventory/all');
+        const meds = await res.json();
 
-function renderInventory() {
-    const tbody = document.querySelector("#inventoryTable tbody");
-    tbody.innerHTML = "";
+        meds.forEach(med => {
+            const row = inventoryTable.insertRow();
+            row.insertCell(0).innerText = med.name;
+            row.insertCell(1).innerText = med.type;
+            row.insertCell(2).innerText = med.brand;
+            row.insertCell(3).innerText = med.medForm;
+            row.insertCell(4).innerText = med.dose;
+            row.insertCell(5).innerText = med.expirationDate;
+            row.insertCell(6).innerText = med.dateAdded;
+            row.insertCell(7).innerText = med.stock;
+            row.insertCell(8).innerText = med.costPerPill;
 
-    inventory.forEach((med, index) => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-            <td>${med.name}</td>
-            <td>${med.brand}</td>
-            <td>${med.type}</td>
-            <td>${med.dose}</td>
-            <td>${med.form}</td>
-            <td>${med.stock}</td>
-            <td>
-                <button onclick="editMedication(${index})">Edit</button>
-                <button onclick="deleteMedication(${index})">Delete</button>
-            </td>
-        `;
-        tbody.appendChild(row);
-    });
-}
+            const actionsCell = row.insertCell(9);
 
-function showAddForm() {
-    document.getElementById("medForm").reset();
-    document.getElementById("formTitle").innerText = "Add Medication";
-    document.getElementById("medIndex").value = "";
-    document.getElementById("medFormSection").style.display = "block";
-}
+            const editButton = document.createElement('button');
+            editButton.textContent = 'Edit';
+            editButton.classList.add('edit-button');
+            editButton.addEventListener('click', () => {
+                document.getElementById('name').value = med.name;
+                document.getElementById('type').value = med.type;
+                document.getElementById('brand').value = med.brand;
+                document.getElementById('medForm').value = med.medForm;
+                document.getElementById('dose').value = med.dose;
+                document.getElementById('expirationDate').value = med.expirationDate;
+                document.getElementById('dateAdded').value = med.dateAdded;
+                document.getElementById('stock').value = med.stock;
+                document.getElementById('costPerPill').value = med.costPerPill;
+                editMode = true;
+                editId = med.id;
+            });
 
-function hideMedForm() {
-    document.getElementById("medFormSection").style.display = "none";
-}
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.classList.add('delete-button');
+            deleteButton.addEventListener('click', async () => {
+                await fetch(`/api/inventory/delete/${med.id}`, { method: 'DELETE' });
+                loadInventory();
+            });
 
-function editMedication(index) {
-    const med = inventory[index];
-    document.getElementById("formTitle").innerText = "Edit Medication";
-    document.getElementById("medIndex").value = index;
-    document.getElementById("medName").value = med.name;
-    document.getElementById("medBrand").value = med.brand;
-    document.getElementById("medType").value = med.type;
-    document.getElementById("medDose").value = med.dose;
-    document.getElementById("medForm").value = med.form;
-    document.getElementById("medStock").value = med.stock;
-    document.getElementById("medFormSection").style.display = "block";
-}
-
-function deleteMedication(index) {
-    if (confirm("Are you sure you want to delete this medication?")) {
-        inventory.splice(index, 1);
-        renderInventory();
+            actionsCell.appendChild(editButton);
+            actionsCell.appendChild(deleteButton);
+        });
     }
-}
+
+    loadInventory();
+});

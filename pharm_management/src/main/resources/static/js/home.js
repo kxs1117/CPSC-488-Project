@@ -1,20 +1,28 @@
-const dateElement = document.getElementById('date');
-const mainContainer = document.getElementById('main')
+document.addEventListener("DOMContentLoaded", async () => {
+    try {
+        // Get current user role from backend session
+        const response = await fetch("/api/session");
+        const role = await response.text();
 
-function displayDate()
-{
-    months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", 		"November", "December"]
+        if (role === "none") {
+            window.location.href = "login.html"; // Force login
+            return;
+        }
 
-    const date = new Date()
+        // Display the current role
+        const display = document.getElementById("date");
+        if (display) display.textContent = `Logged in as: ${role.toUpperCase()}`;
 
-    const month = date.getMonth()
-    const day = date.getDate()
-    const year = date.getFullYear()
-    dateElement.textContent = `${months[month]} ${day}, ${year}`
-    
-}
+        // Hide features the role shouldn't see
+        document.querySelectorAll(".feature-box").forEach(box => {
+            const allowedRoles = box.getAttribute("data-roles").split(",");
+            if (!allowedRoles.includes(role)) {
+                box.style.display = "none";
+            }
+        });
 
-
-
-displayDate();
-
+    } catch (err) {
+        console.error("Error fetching session info:", err);
+        window.location.href = "login.html";
+    }
+});
